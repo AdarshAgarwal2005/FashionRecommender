@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Find Your Next Style!</h1>
+        <p>Select an item you like from the samples below to get visually similar recommendations.</p>
+
+        <form action="/recommend" method="POST">
+            <div class="sample-items-grid">
+                {% for item in sample_items %}
+                    <label class="item-card">
+                        <input type="radio" name="selected_item_idx" value="{{ item.original_idx }}" required>
+                        <img src="{{ item.image_url }}" alt="{{ item.class_name }}" width="100" height="100">
+                        <span>{{ item.class_name }}</span>
+                    </label>
+                {% endfor %}
+            </div>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+</body>
+</html>
