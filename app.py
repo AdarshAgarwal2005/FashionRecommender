@@ -1,3 +1,10 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
+# Rest of your imports and Flask app code
+import faiss
+import torch
+from flask import Flask, render_template, request, redirect, url_for
 from flask import Flask, render_template, request, url_for, send_from_directory
 import os
 import torch
